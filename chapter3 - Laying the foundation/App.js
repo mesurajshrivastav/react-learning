@@ -23,10 +23,12 @@ const Title = () => (
 
 
 // component compositions
+const age = 45;
 const Para = () => (
     <div className="container">
         <Title/>
         <h2>React</h2>
+        {age}
         <p>hi this is react and develope by facebook developers
         </p>
     </div>
