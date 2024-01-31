@@ -16,6 +16,7 @@
 .header > img {
   width: 80px;
   border-radius: 50px;
+  margin-left: 10px;
   margin-right: 1070px;
   cursor: pointer;
 }
@@ -29,4 +30,48 @@
   padding: 20px;
   text-decoration: none;
   font-size: 20px;
+}
+.header > ul > li > a:hover {
+  /* cursor: pointer; */
+  text-decoration: underline;
+  color:rgb(115, 112, 112);
+}
+
+/* restaurent cards */
+.card-container {
+  margin: 10px;
+  /* border : 1px solid black; */
+  width: 185;
+  text-align: center;
+}
+.card-container:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+.card-container > img {
+  width : 184px;
+}
+
+/* search */
+.search {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.search > input {
+  padding : 10px;
+  width: 615px;
+}
+.search > button {
+  padding: 10px;
+}
+
+/* Body Container */
+
+.res-cards-container {
+  border: 1px solid black;
+  margin-top: 30px;
+  height: 590px;
+  display: flex;
+  flex-wrap: wrap;
 }
