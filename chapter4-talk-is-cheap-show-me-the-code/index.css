@@ -34,13 +34,13 @@
 .header > ul > li > a:hover {
   /* cursor: pointer; */
   text-decoration: underline;
-  color:rgb(115, 112, 112);
+  color: rgb(115, 112, 112);
 }
 
 /* restaurent cards */
 .card-container {
   margin: 10px;
-  height:335px;
+  height: 335px;
   /* width: 200px; */
   text-align: center;
 }
@@ -49,22 +49,18 @@
   border: 1px solid black;
 }
 .card-container > img {
-  width : 200px;
+  width: 200px;
   margin: 5px;
 }
 
-/* search */
-.search {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+/* top rated button */
+.filter {
+  margin: 10px;
 }
-.search > input {
-  padding : 10px;
-  width: 615px;
-}
-.search > button {
-  padding: 10px;
+.filter-btn {
+  padding: 5px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 /* Body Container */
