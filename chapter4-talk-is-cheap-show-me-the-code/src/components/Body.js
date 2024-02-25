@@ -1,5 +1,6 @@
 import ResCards from "./ResCards";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 //creating main body
 
@@ -27,7 +28,8 @@ const Body = () => {
     );
   };
 
-  return (
+
+  return listOfRestaurents.length === 0 ?( <Shimmer/>) : (
     <div className="body-container">
       <div className="filter">
         <button className="filter-btn" onClick={handleFilter}>

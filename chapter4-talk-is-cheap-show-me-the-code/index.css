@@ -17,7 +17,7 @@
   width: 80px;
   border-radius: 50px;
   margin-left: 10px;
-  margin-right: 1070px;
+  margin-right: 900px;
   cursor: pointer;
 }
 
@@ -72,4 +72,36 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+/* Shimmer component */
+
+.shimmer-container {
+  margin-top: 50px;
+  height: 590px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  margin: 15px;
+  height: 335px;
+  width: 240px;
+  /* text-align: center; */
+  background-color: #f0f0f0;
+}
+
+.login-btn {
+  padding: 10px;
+  width: 100px;
+  margin-right: 15px;
+  margin-left: 20px;
+  border-radius: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  border: 2px solid black;
 }
