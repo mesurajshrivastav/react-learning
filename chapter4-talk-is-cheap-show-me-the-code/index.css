@@ -56,11 +56,13 @@
 /* top rated button */
 .filter {
   margin: 10px;
+  display: flex;
 }
 .filter-btn {
   padding: 5px;
   border-radius: 20px;
   cursor: pointer;
+  margin-right: 350px;
 }
 
 /* Body Container */
@@ -104,4 +106,21 @@
 
 .login-btn:hover {
   border: 2px solid black;
+}
+
+.search-input {
+  width: 500px;
+  border-radius: 50px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.search-btn {
+  padding: 10px;
+  width: 100px;
+  margin-right: 15px;
+  margin-left: 20px;
+  border-radius: 50px;
+  border: 1px solid black;
+  cursor: pointer;
 }
