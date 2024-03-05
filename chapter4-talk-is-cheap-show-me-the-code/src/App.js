@@ -2,16 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, Outlet, Router, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Outlet,
+  Router,
+  RouterProvider,
+} from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Cart from "./components/Cart";
+import Error from "./components/Error";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <Outlet/>
+      <Outlet />
     </div>
   );
 };
@@ -19,27 +25,31 @@ const App = () => {
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element : <App/>,
+    element: <App />,
+    errorElement: <Error />,
     children: [
       {
-        path : "/",
-        element: <Body/>
+        path: "/",
+        element: <Body />,
       },
       {
         path: "/about",
-        element : <About/>
+        element: <About />,
       },
       {
         path: "/contact",
-        element : <Contact/>
+        element: <Contact />,
       },
       {
         path: "/cart",
-        element: <Cart/>
-      }
-    ]
-  }
-])
+        element: <Cart />,
+      },
+      {
+        path: "/restaurent/:resId",
+      },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter}/>);
+root.render(<RouterProvider router={appRouter} />);
