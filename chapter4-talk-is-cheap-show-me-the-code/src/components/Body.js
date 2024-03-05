@@ -11,7 +11,6 @@ const Body = () => {
 
   const [searchText, setSearchText] = useState("");
 
-
   //rating
   const handleFilter = function () {
     const filteredList = listOfRestaurents.filter(
@@ -19,13 +18,13 @@ const Body = () => {
     );
     setFilterdRestaurent(filteredList);
   };
-  
+
   useEffect(() => {
     fetchData();
   }, []);
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.7040592&lng=77.10249019999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
     console.log(json);
@@ -39,7 +38,7 @@ const Body = () => {
     );
   };
 
-  return listOfRestaurents.length === 0 ? (
+  return filterdRestaurent.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body-container">
