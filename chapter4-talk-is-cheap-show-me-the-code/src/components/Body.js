@@ -1,6 +1,8 @@
 import ResCards from "./ResCards";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { RESTAURENT_API } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 //creating main body
 
@@ -23,9 +25,7 @@ const Body = () => {
     fetchData();
   }, []);
   const fetchData = async () => {
-    const data = await fetch(
-      "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RESTAURENT_API);
     const json = await data.json();
     console.log(json);
 
@@ -70,7 +70,9 @@ const Body = () => {
       </div>
       <div className="res-cards-container">
         {filterdRestaurent.map((restaurant) => (
-          <ResCards key={restaurant.info.id} resData={restaurant} />
+          <Link to={"/restaurents/"+restaurant.info.id} key={restaurant.info.id} >
+            <ResCards resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

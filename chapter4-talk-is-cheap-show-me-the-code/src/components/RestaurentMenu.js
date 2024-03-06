@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 
+import { useParams } from "react-router-dom";
+import { MENU_API } from "../utils/constants";
+
 const RestaurentMenu = () => {
   const [resInfo, setResInfo] = useState(null);
+
+  const {resId} = useParams();
+  
 
   useEffect(() => {
     fetchMenu();
@@ -10,7 +16,7 @@ const RestaurentMenu = () => {
 
   const fetchMenu = async () => {
     const data = await fetch(
-      "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=424877"
+    MENU_API + resId
     );
 
     const json = await data.json();
@@ -38,7 +44,9 @@ const RestaurentMenu = () => {
         <h2>Menu</h2>
         <ul>
           {itemCards.map((item) => (
-            <li key={item.card.info.id}>{item.card.info.name} - 	&#8377; {item.card.info.price/100}</li>
+            <li key={item.card.info.id}>
+              {item.card.info.name} - &#8377; {item.card.info.price / 100}
+            </li>
           ))}
         </ul>
       </div>
