@@ -1,44 +1,38 @@
-import React from "react";
+import { Component} from "react";
 
-class UserClass extends React.Component {
+class UserClass extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
 
     this.state = {
-      count: 0,
-      count2: 2,
+      name: "Default Name",
+      followers: 10,
+      userInfo: {},
     };
-
-    console.log("child constructor called");
   }
 
-  componentDidMount() {
-    console.log("child componentDidMount called");
+  async componentDidMount() {
+    try {
+      const data = await fetch(
+        "https://api.github.com/users/mesurajshrivastav"
+      );
+      const json = await data.json();
+
+      this.setState({
+        userInfo: json,
+      });
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
   }
 
   render() {
-    const { count, count2 } = this.state;
+    const { userInfo } = this.state;
 
-    const { name, location, learning } = this.props;
     return (
       <div className="user-card">
-        <h2>count : {count}</h2>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-              count2: this.state.count2 * 2,
-            });
-          }}
-        >
-          count increase
-        </button>
-        {console.log("child render called")}
-        <h2>count : {count2}</h2>
-        <h3>Name : {name}</h3>
-        <h3>Location : {location}</h3>
-        <h3>Learning : {learning}</h3>
+        <h3>Name: {userInfo.name}</h3>
+        <h3>Followers: {userInfo.followers}</h3>
       </div>
     );
   }
