@@ -1,20 +1,24 @@
 import ResCards from "./ResCards";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { RESTAURENT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useStatusOnline from "../utils/useStatusOnline";
+import useRestaurent from "../utils/useRestaurent";
 
 //creating main body
 
 const Body = () => {
-  const [listOfRestaurents, setListOfRestaurents] = useState([]);
+  const listOfRestaurents = useRestaurent();
 
   const [filterdRestaurent, setFilterdRestaurent] = useState([]);
 
   const [searchText, setSearchText] = useState("");
 
-  //rating
+  useEffect(() => {
+    setFilterdRestaurent(listOfRestaurents);
+  }, [listOfRestaurents]);
+
+  //Top rated restaurent
   const handleFilter = function () {
     const filteredList = listOfRestaurents.filter(
       (res) => res.info.avgRating > 4.5
@@ -22,21 +26,7 @@ const Body = () => {
     setFilterdRestaurent(filteredList);
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-  const fetchData = async () => {
-    const data = await fetch(RESTAURENT_API);
-    const json = await data.json();
-    // optional chaining
-    setListOfRestaurents(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilterdRestaurent(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-
+  // for checking the online status
   const onlineStatus = useStatusOnline();
   if (onlineStatus === false)
     return (
