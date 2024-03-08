@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { RESTAURENT_API } from "../utils/constants";
 import { Link } from "react-router-dom";
+import useStatusOnline from "../utils/useStatusOnline";
 
 //creating main body
 
@@ -27,8 +28,6 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURENT_API);
     const json = await data.json();
-    console.log(json);
-
     // optional chaining
     setListOfRestaurents(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -37,6 +36,14 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onlineStatus = useStatusOnline();
+  if (onlineStatus === false)
+    return (
+      <h1>
+        Looks like you are offline!! please check your internet connection
+      </h1>
+    );
 
   return filterdRestaurent.length === 0 ? (
     <Shimmer />
@@ -70,7 +77,10 @@ const Body = () => {
       </div>
       <div className="res-cards-container">
         {filterdRestaurent.map((restaurant) => (
-          <Link to={"/restaurents/"+restaurant.info.id} key={restaurant.info.id} >
+          <Link
+            to={"/restaurents/" + restaurant.info.id}
+            key={restaurant.info.id}
+          >
             <ResCards resData={restaurant} />
           </Link>
         ))}

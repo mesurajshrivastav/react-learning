@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react";
+import useStatusOnline from "../utils/useStatusOnline";
 
 const Header = () => {
+  const onlineStatus = useStatusOnline();
 
   const [btnName,setBtnName] = useState("Login");
 
@@ -13,6 +15,7 @@ const Header = () => {
           alt="BigCo Inc. logo"
         />
         <ul>
+          <li>Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
