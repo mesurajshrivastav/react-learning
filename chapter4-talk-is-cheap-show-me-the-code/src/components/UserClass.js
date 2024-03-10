@@ -30,7 +30,7 @@ class UserClass extends Component {
     const { userInfo } = this.state;
 
     return (
-      <div className="user-card flex-auto">
+      <div className="user-card m-4">
         <h3>Name: {userInfo.name}</h3>
         <h3>Followers: {userInfo.followers}</h3>
       </div>
