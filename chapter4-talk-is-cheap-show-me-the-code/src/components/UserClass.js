@@ -31,8 +31,8 @@ class UserClass extends Component {
 
     return (
       <div className="user-card">
-        <h3>Name: {userInfo.name}</h3>
-        <h3>Followers: {userInfo.followers}</h3>
+        <h3>Full Name: {userInfo.name}</h3>
+        <h3>Followers in Github: {userInfo.followers}</h3>
       </div>
     );
   }
