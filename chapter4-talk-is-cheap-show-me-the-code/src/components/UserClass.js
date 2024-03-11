@@ -22,7 +22,7 @@ class UserClass extends Component {
         userInfo: json,
       });
     } catch (error) {
-      console.error("Error fetching user data:", error);
+      console.error("fetching user data:", error);
     }
   }
 
