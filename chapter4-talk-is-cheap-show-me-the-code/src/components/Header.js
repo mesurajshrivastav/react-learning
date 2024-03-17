@@ -9,7 +9,7 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   return (
-    <div className="flex justify-between bg-gray-50 shadow-lg m-2 rounded-2xl h-20 sticky top-0">
+    <div className="flex justify-between bg-gray-50 shadow-lg m-2 rounded-2xl h-20 z-10  sticky top-0">
       <div className="logo-container">
         <img
           className="w-20 rounded-2xl"

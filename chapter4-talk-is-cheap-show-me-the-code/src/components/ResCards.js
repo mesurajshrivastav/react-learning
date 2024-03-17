@@ -33,4 +33,19 @@ const ResCards = (props) => {
   );
 };
 
+//Higher order function
+
+export const withPromotedLabel = (ResCards) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute bg-black text-white m-4 p-0.5 rounded-lg">
+          Promoted
+        </label>
+        <ResCards {...props} />
+      </div>
+    );
+  };
+};
+
 export default ResCards;
