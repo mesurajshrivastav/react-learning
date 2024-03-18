@@ -21,7 +21,6 @@ const useRestaurent = () => {
       console.log("error fetching data", error);
     }
   };
-  console.log(listOfRestaurents);
 
   return listOfRestaurents;
 };
