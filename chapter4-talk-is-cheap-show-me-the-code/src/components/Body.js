@@ -1,9 +1,10 @@
 import ResCards, { withPromotedLabel } from "./ResCards";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useStatusOnline from "../utils/useStatusOnline";
 import useRestaurent from "../utils/useRestaurent";
+import UserContext from "../utils/UserContext";
 
 //creating main body
 
@@ -15,6 +16,9 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(ResCards);
+
+
+  const {setUserName, loggedInUser} = useContext(UserContext);
 
   useEffect(() => {
     setFilterdRestaurent(listOfRestaurents);
@@ -41,8 +45,8 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body-container">
-      <div className="filter flex">
-        <div className="m-4 p-4 flex items-center">
+      <div className="filter flex justify-between m-2 mx-8">
+        <div className="p-4 flex items-center">
           <button
             className="px-4 py-2 bg-orange-600 rounded-lg text-white font-bold hover:underline"
             onClick={handleFilter}
@@ -50,18 +54,27 @@ const Body = () => {
             Top Rated Restaurents
           </button>
         </div>
-
-        <div className="m-4 p-4">
+        <div className="x-4 py-2">
+          <label className="font-bold text-orange-500">UserName : </label>
           <input
             type="text"
-            className="border border-solid border-black w-96 p-1 ml-72"
+            className=" border border-solid border-black w-50 p-1"
+            value={loggedInUser}
+            onChange={(e)=> setUserName(e.target.value)}
+          />
+        </div>
+
+        <div className="x-4 py-2 ">
+          <input
+            type="text"
+            className="border border-solid border-black w-96 p-1"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
           <button
-            className="px-4 py-2 ml-4 bg-orange-600 rounded-lg text-white font-bold hover:underline"
+            className="px-4 py-2  bg-orange-600 rounded-lg text-white font-bold hover:underline"
             onClick={() => {
               const filteredRestaurent = listOfRestaurents.filter((res) => {
                 return res.info.name.toLowerCase().includes(searchText);
@@ -79,11 +92,11 @@ const Body = () => {
             to={"/restaurents/" + restaurant.info.id}
             key={restaurant.info.id}
           >
-            {
-              restaurant.info.veg ? <RestaurantCardPromoted resData={restaurant}/> :  <ResCards resData={restaurant} />
-            }
-
-           
+            {restaurant.info.veg ? (
+              <RestaurantCardPromoted resData={restaurant} />
+            ) : (
+              <ResCards resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

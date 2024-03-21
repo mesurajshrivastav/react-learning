@@ -30,7 +30,7 @@ const App = () => {
 
   return (
     <div>
-      <UserContext.Provider value={{ loggedInUser: userName }}>
+      <UserContext.Provider value={{ loggedInUser: userName ,setUserName }}>
         <Header />
         <Outlet />
       </UserContext.Provider>
